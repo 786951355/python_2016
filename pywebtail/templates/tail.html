@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web tail</title>
+</head>
+<style>
+    input{
+        border: 1px solid #ccc;
+        padding: 7px 0px;
+        border-radius: 3px;
+        width:250px;
+        padding-left:5px;
+        placeholder="hello";
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+    }
+    input:focus{
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+    #button {
+        height:30px;
+        width:60px;
+    }    
+    #text {
+        font-size:12px;
+    }
+</style>
+<body>
+    <div id="right">
+        <p>输入要查看的日志文件名</p>
+        <input type="text" id="input" placeholder="e.g.日志格式-->/log/ip/filepath"/>
+        <button id="button">提交</button>
+        <div id="text">
+        </div>
+    </div>
+</body>
+<script>
+    var ws = new WebSocket("ws://192.168.2.151:3000/ws")
+    text = document.getElementById("text")
+    input = document.getElementById("input")
+    button = document.getElementById("button")
+    button.onclick = function () {
+    if (input.value){
+       ws.send(input.value);
+       text.innerHTML = '';
+       text.innerHTML += ("<br/>" + "==============文件" + input.value +"实时日志==============="+"<br/>" + "<br />" + "<hr/>");
+	}else {
+        alert("请输入文件名!");
+	   }
+    }
+    ws.onmessage = function (message) {
+    var tmp = message.data + '<br />';
+	    text.innerHTML += tmp;
+    }
+</script>
+</html>
