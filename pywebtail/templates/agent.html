@@ -109,11 +109,11 @@
     <div id="left">
 		<div id="title"><h3><a href="">{{ header }}</a></h3></div>
         <section>
-            {% for  category in books %}
+            {% for  agent in agents %}
             <details class="menu" open>
-                <summary>{{  category }}</summary>
+                <summary>{{  agent }}</summary>
                 <ul>
-                    {% for i in books[category] %}
+                    {% for i in agents[agent] %}
                     <li>{{ i }}</li>
                     {% end %}
                 </ul>
