@@ -27,7 +27,7 @@ class MainHandler(RequestHandler):
 
 class FlushAgentHandler(RequestHandler):
     def get(self):
-        self.render('agent.html',title="web tail",header="客户端列表",books=agents)
+        self.render('agent.html',title="web tail",header="客户端列表",agents=agents)
 
 
 class BodyHandler(RequestHandler):
