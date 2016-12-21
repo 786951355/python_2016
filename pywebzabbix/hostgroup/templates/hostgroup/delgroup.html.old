@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除主机组</title>
+
+</head>
+<body>
+<form action="{% url 'hostgroup:delgroup' %}" method="post">
+    {% csrf_token %}
+    <p>输入主机组id</p>
+    <input type='text' name="groupid" ></input>
+    <input type="submit" value="提交"></input>
+</form>
+
+</body>
+</html>

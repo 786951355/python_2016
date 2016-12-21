@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除主机组</title>
+    {% include 'basecss.html' %}
+</head>
+<body>
+<form class="am-form-inline" role="form" action="{% url 'hostgroup:delgroup' %}" method="post">
+    {% csrf_token %}
+    <div class="am-form-group">
+        <input class="am-form-field" type='text' name="groupid" placeholder="输入组id" ></input>
+    </div>
+    <div class="am-form-group">
+        <button type="submit" class="am-btn am-btn-default">提交</button>
+    </div>
+</form>
+</body>
+</html>

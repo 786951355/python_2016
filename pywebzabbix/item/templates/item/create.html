@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建 Item</title>
+    {% include 'basecss.html' %}
+    <style>
+        div {margin :  5px 1px 1px 10px;}
+    </style>
+
+<script src="/static/assets/js/jquery.min.js"></script>
+<script src="/static/assets/js/amazeui.min.js"></script>
+<script src="/static/assets/js/app.js"></script>
+</head>
+<body>
+<div>
+    <div><h2>创建item</h2></div>
+    <form action="{% url 'item:create' %}" method="post">
+        {% csrf_token %}
+        <div class="am-form-group">
+            主机名：<input name="hostname" type="text" class="am-form-field"/>
+        </div>
+        <div class="am-form-group">
+            item_name：<input name="itemname" type="text" class="am-form-field"/>
+        </div>
+        <div class="am-form-group">
+            type:
+            <select name="type" data-am-selected>
+                <option value="0" selected>Zabbix agent</option>
+                <option value="1" >SNMPv1 agent</option>
+                <option value="2">Zabbix trapper</option>
+                <option value="3">simple check</option>
+                <option value="4">SNMPv2 agent</option>
+                <option value="5">Zabbix internal</option>
+                <option value="6">SNMPv3 agent</option>
+                <option value="7">Zabbix agent (active)</option>
+                <option value="8">Zabbix aggregate</option>
+                <option value="9">web item</option>
+                <option value="10">external check</option>
+                <option value="11" >database monitor</option>
+                <option value="12" >IPMI agent</option>
+                <option value="13" >SSH agent</option>
+                <option value="14" >TELNET agent</option>
+                <option value="15" >calculated</option>
+                <option value="16" >JMX agent</option>
+                <option value="17">SNMP trap</option>
+            </select>
+        </div>
+        <div class="am-form-group">
+            key_name：<input name="keyname" class="am-form-field" type="text">
+        </div>
+        <div class="am-form-group">
+            key_value：<input name="keyvalue" class="am-form-field" type="text">
+        </div>
+        <div class="am-form-group">
+            key_type：<input name="keytype" class="am-form-field" type="text">
+        </div>
+        <div class="am-form-group">
+            value_type：<input name="valuetype" class="am-form-field" type="text">
+        </div>
+        <div class="am-form-group">
+            数据更新间隔：<input name="delay" class="am-form-field" type="text">
+        </div>
+        <div class="am-form-group">
+            start_key_value：<input name="startkeyvalue" placeholder="default 0" class="am-form-field" type="text">
+        </div>
+        <div class="am-form-group">
+            end_key_value：<input name="endkeyvalue" class="am-form-field" type="text">
+        </div>
+        <div><button type="submit" class="am-btn am-btn-success">提交</button></div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除图像</title>
+    {% include 'basecss.html' %}
+    <style>
+        div{ margin: 20px;}
+    </style>
+</head>
+<body>
+ <div><h2>删除图像</h2></div>
+<form  role="form" action="{% url 'graph:delete' %}" method="post">
+    {% csrf_token %}
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="图像id,多个图像,分隔" name="graphid" />
+    </div>
+    <div class="am-form-group">
+    <button type="submit" class="am-btn am-btn-warning">提交</button>
+    </div>
+</form>
+
+</body>
+</html>

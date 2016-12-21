@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>菜单导航</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Iconos -->
+	<link href="/static/assets/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/assets/css/style.css" media="screen" type="text/css" />
+
+</head>
+<body>
+<div>
+	<!-- Contenedor -->
+	<ul id="accordion" class="accordion">
+        {% for  menu, item in menus.items %}
+		<li>
+			<div class="link">
+                <i class="fa fa-paint-brush"></i>{{ menu }}<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        {% for i in item %}
+                            {% for k, v in i.items %}
+                                <li><a href="{{ v }}" target="left">{{ k }}</a></li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+		</li>
+        {% endfor %}
+	</ul>
+ </div>
+
+<script src='/static/assets/js/jquery.min.js'></script>
+<script src="/static/assets/js/index.js"></script>
+
+</body>
+</html>

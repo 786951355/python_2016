@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询screen Items</title>
+    {% include 'basecss.html' %}
+</head>
+<body>
+ <div><h2>创建screenitems</h2></div>
+<form class="am-form-inline" role="form" action="{% url 'screenitem:create' %}" method="post">
+    {% csrf_token %}
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="screenid" name="screenid" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="类型(0表示图形)" name="resourcetype" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="resourceid(graphid)" name="resourceid" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="x方向从上向下" name="x" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="y方向从左到右" name="y" />
+    </div>
+    <div class="am-form-group">
+        宽度：<input name="width" class="am-form-field" type="text"  value="800">
+    </div>
+    <div class="am-form-group">
+        高度：<input name="height" class="am-form-field" type="text" value="200">
+    </div>
+    <div class="am-form-group">
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+    </div>
+</form>
+
+</body>
+</html>

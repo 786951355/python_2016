@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询模板</title>
+
+  {% include 'basecss.html' %}
+</head>
+<body>
+<div>
+<form class="am-form-inline" role="form" action="{% url 'template:get' %}" method="post">
+    {% csrf_token %}
+    <input class="am-form-field" placeholder="输入templateid" type='text' name="templateid" />
+    <button type="submit" class="am-btn am-btn-default">提交</button>
+</form>
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询graph Items</title>
+    {% include 'basecss.html' %}
+</head>
+<body>
+ <div><h2>查询图像</h2></div>
+<form class="am-form-inline" role="form" action="{% url 'graph:getgraphitems' %}" method="post">
+    {% csrf_token %}
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="graphids" name="graphids" />
+    </div>
+    <div class="am-form-group">
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+    </div>
+</form>
+
+</body>
+</html>

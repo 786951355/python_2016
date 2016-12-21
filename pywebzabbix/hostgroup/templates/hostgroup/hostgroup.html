@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询所有主机组</title>
+
+</head>
+<body>
+    {% for g in groupinfo %}
+       <li> {{ g.name }}-- {{ g.groupid }} </li>
+    {% endfor %}
+
+</body>
+</html>

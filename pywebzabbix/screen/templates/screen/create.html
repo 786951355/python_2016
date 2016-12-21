@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建Screen</title>
+    {% include 'basecss.html' %}
+    <style>
+        div {margin :  10px 0px 5px 10px;}
+    </style>
+
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/jquery.colorpicker.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</head>
+<body>
+<div>
+    <div><h2>创建Screen</h2></div>
+    <form action="{% url 'screen:create' %}" class="am-form-inline" method="post">
+        {% csrf_token %}
+        <div class="am-form-group">
+            名字：<input name="screenname" type="text" class="am-form-field"/>
+        </div>
+        <div class="am-form-group">
+            行数：<input name="rows" class="am-form-field" type="text"  value="10">
+        </div>
+        <div class="am-form-group">
+            列数：<input name="cols" class="am-form-field" type="text" value="2">
+        </div>
+        <br/>
+        <div class="am-form-group" class="am-form-inline">
+            <div id="js-do">
+            </div>
+            <p id="js-do-actions">
+                <input type="button" class="am-btn am-btn-primary am-round" data-insert value="插入">
+                <input type="button" class="am-btn am-btn-warning am-round" data-remove value="删除"/>
+            </p>
+        </div>
+
+        <div><button type="submit" class="am-btn am-btn-success">提交</button></div>
+    </form>
+</div>
+
+<script>
+
+    $(function() {
+      var $wrapper = $('#js-do');
+    $('#js-do-actions').find('input').on('click', function(e) {
+      var $t = $(e.target);
+      if ($t.is('[data-insert]')) {
+        var i=$wrapper.find('p').last().index();
+        $wrapper.append('<p>resourcetype：<input id="resourcetype" name="resourcetype"  type="text"/>' +
+                ' resourceid：<input id="resourceid" name="resourceid" type="text"  placeholder="resourceid"/>' +
+                ' x方向：<input name="x" type="text" placeholder="x方向从左到右"/>' +
+                ' y方向：<input name="y" type="text" placeholder="y方向从上到下"/></p>');
+
+      } else if($t.is('[data-remove]')) {
+        $wrapper.find('p').last().remove();
+      }
+    });
+  })
+</script>
+</body>
+</html>

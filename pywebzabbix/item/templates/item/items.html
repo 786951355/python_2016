@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+    {% include 'basecss.html' %}
+</head>
+<body>
+
+    <h1>主机id为 {{ hostid }} 所有items, graphid 为创建屏幕时的 resourceid</h1>
+<div>
+    {% for item in items %}
+    <li>name:{{ item.name }} -- itemid:{{ item.itemid }} -- templateid:{{ item.templateid }}</li>
+    {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除 Items</title>
+    {% include 'basecss.html' %}
+</head>
+<body>
+ <div><h2>删除item</h2></div>
+<form role="form" action="{% url 'item:delete' %}" method="post">
+    {% csrf_token %}
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="itemid列表,分隔" name="itemlist" />
+    </div>
+    <div class="am-form-group">
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+    </div>
+</form>
+
+</body>
+</html>

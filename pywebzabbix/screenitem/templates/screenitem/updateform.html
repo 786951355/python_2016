@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新 screenitems</title>
+    {% include 'basecss.html' %}
+    <style>
+        div { margin: 10px;}
+    </style>
+</head>
+<body>
+ <div><h2>更新screen items</h2></div>
+<form  role="form" action="{% url 'screenitem:update' %}" method="post">
+    {% csrf_token %}
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="screenitemid" name="screenitemid" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="类型" name="resourcetype" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="resourceid" name="resourceid" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="x方向从上向下" name="x" />
+    </div>
+    <div class="am-form-group">
+        <input type='text' class="am-form-field" placeholder="y方向从左到右" name="y" />
+    </div>
+    <div class="am-form-group">
+        宽度：<input name="width" class="am-form-field" type="text"  value="800">
+    </div>
+    <div class="am-form-group">
+        高度：<input name="height" class="am-form-field" type="text" value="200">
+    </div>
+    <div class="am-form-group">
+    <button type="submit" class="am-btn am-btn-success">提交</button>
+    </div>
+</form>
+
+</body>
+</html>

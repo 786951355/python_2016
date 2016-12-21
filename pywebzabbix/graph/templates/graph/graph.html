@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>主机id为 {{ hostid }} 所有图像items, graphid 为创建屏幕时的 resourceid</h1>
+
+    {% for item in items %}
+    <li>{{ item }}</li>
+    {% endfor %}
+
+</body>
+</html>

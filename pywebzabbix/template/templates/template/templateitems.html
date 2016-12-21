@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询所有模板</title>
+
+</head>
+<body>
+    {% for t in templates %}
+       <li> name: {{ t.host }} ------ id: {{ t.templateid }} </li>
+    {% endfor %}
+
+</body>
+</html>
+

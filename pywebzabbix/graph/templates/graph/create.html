@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询graph Items</title>
+    {% include 'basecss.html' %}
+    <style>
+        div {margin :  10px 0px 5px 10px;}
+    </style>
+
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/jquery.colorpicker.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</head>
+<body>
+<div>
+    <div><h2>创建图像</h2></div>
+    <form action="{% url 'graph:create' %}" class="am-form-inline" method="post">
+        {% csrf_token %}
+        <div class="am-form-group">
+            名字：<input name="graphname" type="text" class="am-form-field"/>
+        </div>
+        <div class="am-form-group">
+            宽度：<input name="width" class="am-form-field" type="text"  value="900">
+        </div>
+        <div class="am-form-group">
+            高度：<input name="height" class="am-form-field" type="text" value="200">
+        </div>
+        <br/>
+        <div class="am-form-group" class="am-form-inline">
+            <div id="js-do">
+            </div>
+            <p id="js-do-actions">
+                <input type="button" class="am-btn am-btn-primary am-round" data-insert value="插入">
+                <input type="button" class="am-btn am-btn-warning am-round" data-remove value="删除"/>
+            </p>
+        </div>
+
+        <div><button type="submit" class="am-btn am-btn-success">提交</button></div>
+    </form>
+</div>
+
+<script>
+
+    $(function() {
+      var $wrapper = $('#js-do');
+    $('#js-do-actions').find('input').on('click', function(e) {
+      var $t = $(e.target);
+      if ($t.is('[data-insert]')) {
+        var i=$wrapper.find('p').last().index();
+        $wrapper.append('<p>itemid：<input id="itemid" name="itemid"  type="text"/>' +
+                ' 颜色：<input id="color'+(i+1)+'" name="color" type="text"  placeholder="C80000"/>' +
+                ' 线条：<input name="drawtype" type="text" placeholder="默认粗线-2"/>' +
+                ' 排序：<input name="sortorder" type="text" placeholder="图像显示的顺序从0开始"/></p>');
+          for(var j=0; j<= i+1; j++){
+            $("#color" + j).colorpicker({
+                    fillcolor:true
+                });
+          }
+      } else if($t.is('[data-remove]')) {
+        $wrapper.find('p').last().remove();
+      }
+    });
+  })
+</script>
+</body>
+</html>
